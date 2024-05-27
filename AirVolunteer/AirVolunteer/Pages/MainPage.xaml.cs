@@ -28,46 +28,53 @@ namespace AirVolunteer
 
         private async void OnContinueClicked(object sender, EventArgs e)
         {
-            if (String.IsNullOrEmpty(_nameEntry.Text) 
-                || String.IsNullOrEmpty(_phoneEntry.Text) 
-                || String.IsNullOrEmpty(_cpfEntry.Text))
+            try {
+                if (String.IsNullOrEmpty(_nameEntry.Text)
+                    || String.IsNullOrEmpty(_phoneEntry.Text)
+                    || String.IsNullOrEmpty(_cpfEntry.Text))
                 {
-                await DisplayAlert("Oops", "Todos os campos são obrigatorios", "Ok");
-                return;
+                    await DisplayAlert("Oops", "Todos os campos são obrigatorios", "Ok");
+                    return;
+                }
+
+                if (string.IsNullOrWhiteSpace(_phoneEntry.CleanText)
+                || _phoneEntry.CleanText.Length != 11)
+                {
+                    await DisplayAlert("Telefone inválido", "Você precisa informar o número do seu celular para confirmá-lo", "Ok");
+                    return;
+                }
+                if (string.IsNullOrWhiteSpace(_cpfEntry.CleanText)
+                    || _cpfEntry.CleanText.Length != 11)
+                {
+                    await DisplayAlert("CPF inválido", "Você precisa informar seu número de CPF", "Ok");
+                    return;
+                }
+                if (string.IsNullOrWhiteSpace(_nameEntry.Text)
+                    || _nameEntry.Text.Length <= 4)
+                {
+                    await DisplayAlert("Nome inválido", "Você precisa informar seu nome completo", "Ok");
+                    return;
+                }
+                var pilot = new PilotMOD()
+                {
+                    CPF = long.Parse(_cpfEntry.CleanText),
+                    Id = Guid.Empty,
+                    Name = _nameEntry.Text,
+                    Phone = long.Parse(_phoneEntry.CleanText)
+                };
+                pilot = await PilotAPI.PostPilotAsync(pilot);
+                Parameters.PilotID = pilot.Id.ToString();
             }
-            
-            if (string.IsNullOrWhiteSpace(_phoneEntry.CleanText)
-            || _phoneEntry.CleanText.Length != 11)
+            catch (Exception ex)
             {
-                await DisplayAlert("Telefone inválido", "Você precisa informar o número do seu celular para confirmá-lo", "Ok");
-                return;
+                throw ex;
             }
-            if (string.IsNullOrWhiteSpace(_cpfEntry.CleanText)
-                || _cpfEntry.CleanText.Length != 11)
-            {
-                await DisplayAlert("CPF inválido", "Você precisa informar seu número de CPF", "Ok");
-                return;
-            }
-            if (string.IsNullOrWhiteSpace(_nameEntry.Text)
-                || _nameEntry.Text.Length <= 4)
-            {
-                await DisplayAlert("Nome inválido", "Você precisa informar seu nome completo", "Ok");
-                return;
-            }
-            var pilot = new PilotMOD()
-            {
-                CPF = long.Parse(_cpfEntry.CleanText),
-                Id = Guid.Empty,
-                Name = _nameEntry.Text,
-                Phone = long.Parse(_phoneEntry.CleanText)
-            };
-            pilot = await PilotAPI.PostPilotAsync(pilot);
-            Parameters.PilotID = pilot.Id.ToString();
         }
 
         protected override async void OnAppearing()
         {
             base.OnAppearing();
+            _cpfEntry.Focus();
             var pilotID = Parameters.PilotID;
             if (!string.IsNullOrEmpty(pilotID))
             {
