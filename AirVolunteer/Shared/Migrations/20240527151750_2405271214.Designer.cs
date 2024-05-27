@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Shared.Database;
 
@@ -10,9 +11,11 @@ using Shared.Database;
 namespace Shared.Migrations
 {
     [DbContext(typeof(AirVolunteerDBContext))]
-    partial class AirVolunteerDBContextModelSnapshot : ModelSnapshot
+    [Migration("20240527151750_2405271214")]
+    partial class _2405271214
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

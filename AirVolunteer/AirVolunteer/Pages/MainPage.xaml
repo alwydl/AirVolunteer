@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:AirVolunteer.Views"
+             x:Class="AirVolunteer.MainPage">
+
+    <ScrollView>
+        <VerticalStackLayout
+            Padding="30,0"
+            Spacing="25">
+            <Label Text="CPF"
+	            FontSize="Large"
+	            TextColor ="{DynamicResource PrimaryColor}"
+	            VerticalOptions="EndAndExpand"
+	            HorizontalOptions="CenterAndExpand">
+            </Label>
+            <local:MaskedEntry x:Name="_cpfEntry"
+                Mask="###.###.###-##"
+	           	VerticalOptions="Start"
+        		Placeholder="123.456.789-00"
+		        FontSize="20"
+                HorizontalTextAlignment="Center"
+        		Completed="HandleCPFConfirmation"
+	        	Keyboard="Numeric"/>
+            <Label Text="Nome"
+                FontSize="Large"
+                TextColor ="{DynamicResource PrimaryColor}"
+                VerticalOptions="EndAndExpand"
+                HorizontalOptions="CenterAndExpand">
+            </Label>
+            <Entry x:Name="_nameEntry"
+   	            VerticalOptions="Start"
+                FontSize="20"
+                HorizontalTextAlignment="Center"
+  		        Completed="HandleNameConfirmation"
+	            Keyboard="Text"/>
+            <Label Text="Telefone"
+                FontSize="Large"
+                TextColor ="{DynamicResource PrimaryColor}"
+                VerticalOptions="EndAndExpand"
+                HorizontalOptions="CenterAndExpand">
+            </Label>
+            <local:MaskedEntry x:Name="_phoneEntry"
+                               Mask="(##) #####-####"
+                VerticalOptions="Start"
+                Placeholder="(12) 98765-4321"
+                FontSize="20"
+                HorizontalTextAlignment="Center"
+                Completed="HandlePhoneConfirmation"
+                Keyboard="Telephone"/>
+            <Button
+                x:Name="Save"
+                Text="Continuar" 
+                Clicked="OnContinueClicked"
+                HorizontalOptions="Fill" />
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>

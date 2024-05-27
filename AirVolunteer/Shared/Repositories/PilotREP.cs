@@ -27,7 +27,7 @@ namespace Shared.Repositories
                 throw new Exception("Failed to retrieve the Pilot from the DB", ex);
             }
         }
-        public static PilotMOD Get(int cpf)
+        public static PilotMOD Get(long cpf)
         {
             try
             {

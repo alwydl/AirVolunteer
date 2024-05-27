@@ -15,8 +15,8 @@ namespace Shared.Models
         [Required]
         public string Name { get; set; }
         [Required]
-        public int Phone { get; set; }
+        public long Phone { get; set; }
         [Required]
-        public int CPF { get; set; }
+        public long CPF { get; set; }
     }
 }

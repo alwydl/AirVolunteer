@@ -8,5 +8,10 @@
 
             MainPage = new AppShell();
         }
+
+        public void ReplaceMainPage(Page newPage)
+        {
+            MainPage = newPage;
+        }
     }
 }
