@@ -58,12 +58,14 @@ namespace AirVolunteer
                 var pilot = new PilotMOD()
                 {
                     CPF = long.Parse(_cpfEntry.CleanText),
-                    Id = Guid.Empty,
+                    Id = Guid.NewGuid(),
                     Name = _nameEntry.Text,
                     Phone = long.Parse(_phoneEntry.CleanText)
                 };
                 pilot = await PilotAPI.PostPilotAsync(pilot);
                 Parameters.PilotID = pilot.Id.ToString();
+
+                //Get all flights from this pilot
             }
             catch (Exception ex)
             {

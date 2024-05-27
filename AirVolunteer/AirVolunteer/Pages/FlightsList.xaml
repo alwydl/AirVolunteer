@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AirVolunteer.Pages.FlightsList"
+             Title="FlightsList">
+    <RefreshView x:Name="_refreshView"
+    IsRefreshing="{Binding IsLoading}"
+         Command="{Binding RefreshCommand}">
+        <ListView ItemsSource="{Binding Models}" 
+                  HasUnevenRows="True">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell Height="100">
+                        <StackLayout Padding="10">
+                            <Label Text="{Binding Ecommerce}" FontSize="Large" HorizontalOptions="Center"/>
+                            <Label Text="{Binding OrderDescription}" HorizontalOptions="Center"/>
+                            <Label Text="{Binding Created, StringFormat='Created: {0:d}'}" HorizontalOptions="Center"/>
+                            <Label Text="{Binding Amount, StringFormat='Valor: R\${0:F2}'}" HorizontalOptions="Center"/>
+                            <Label Text="{Binding OrderStatus, StringFormat='Status: {0}'}" HorizontalOptions="Center"/>
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </RefreshView>
+</ContentPage>
