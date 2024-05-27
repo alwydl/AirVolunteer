@@ -38,7 +38,8 @@ namespace Shared.Repositories
                 context.Flights.Add(flight);
                 var count = context.SaveChanges();
 
-                return context.Flights.Where(x => x.PilotId == flight.PilotId).ToList();
+                return context.Flights.Where(x => x.PilotId == flight.PilotId 
+                                                    && x.Departure >= DateTime.UtcNow).ToList();
             }
             catch (Exception ex)
             {

@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Drawing;
 
 namespace Shared.Models
@@ -23,5 +24,21 @@ namespace Shared.Models
         [Required]
         public DateTime Departure { get; set; }
         public DateTime Arrival { get; set; }
+        [NotMapped]
+        public DateTime DepartureLocalTime
+        {
+            get
+            {
+                return Departure.ToLocalTime();
+            }
+        }
+        [NotMapped]
+        public DateTime ArrivalLocalTime
+        {
+            get
+            {
+                return Arrival.ToLocalTime();
+            }
+        }
     }
 }

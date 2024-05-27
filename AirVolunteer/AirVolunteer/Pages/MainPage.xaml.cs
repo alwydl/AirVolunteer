@@ -1,5 +1,6 @@
 ﻿using AirVolunteer.APIs;
 using AirVolunteer.Definitions;
+using AirVolunteer.Pages;
 using Shared.Models;
 
 namespace AirVolunteer
@@ -65,7 +66,8 @@ namespace AirVolunteer
                 pilot = await PilotAPI.PostPilotAsync(pilot);
                 Parameters.PilotID = pilot.Id.ToString();
 
-                //Get all flights from this pilot
+                var flights = await FlightAPI.GetFlightsAsync();
+                await Navigation.PushAsync(new FlightsListPage(flights));
             }
             catch (Exception ex)
             {

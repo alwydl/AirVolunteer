@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AirVolunteer.Pages.AddFlightPage"
+             Title="AddFlight">
+    <ScrollView>
+        <VerticalStackLayout
+        Padding="30,0"
+        Spacing="25">
+            <Label Text="Origem"
+            FontSize="Large"
+            TextColor ="{DynamicResource PrimaryColor}"
+            VerticalOptions="EndAndExpand"
+            HorizontalOptions="CenterAndExpand">
+            </Label>
+            <Entry x:Name="_originEntry"
+           	VerticalOptions="Start"
+       		Placeholder="Guarulhos/GRU"
+	        FontSize="20"
+            HorizontalTextAlignment="Center"
+       		Completed="HandleOriginConfirmation"
+        	Keyboard="Text"/>
+            <Label Text="Destino"
+            FontSize="Large"
+            TextColor ="{DynamicResource PrimaryColor}"
+            VerticalOptions="EndAndExpand"
+            HorizontalOptions="CenterAndExpand">
+            </Label>
+            <Entry x:Name="_destinyEntry"
+  	              	VerticalOptions="Start"
+ 		            Placeholder="Guarulhos/GRU"
+                    FontSize="20"
+                    HorizontalTextAlignment="Center"
+            		Completed="HandleDestinyConfirmation"
+                    Keyboard="Text"/>
+            <Label Text="Modelo do Avião"
+FontSize="Large"
+TextColor ="{DynamicResource PrimaryColor}"
+VerticalOptions="EndAndExpand"
+HorizontalOptions="CenterAndExpand">
+            </Label>
+            <Entry x:Name="_modelEntry"
+        	VerticalOptions="Start"
+         Placeholder="Cesna 123"
+        FontSize="20"
+        HorizontalTextAlignment="Center"
+      		Completed="HandleModelConfirmation"
+        Keyboard="Text"/>
+            <Label Text="Número de assentos disponívels"
+FontSize="Large"
+TextColor ="{DynamicResource PrimaryColor}"
+VerticalOptions="EndAndExpand"
+HorizontalOptions="CenterAndExpand">
+            </Label>
+            <Entry x:Name="_paxEntry"
+        	VerticalOptions="Start"
+         Placeholder="3"
+        FontSize="20"
+        HorizontalTextAlignment="Center"
+      		Completed="HandlePaxConfirmation"
+        Keyboard="Numeric"/>
+            <Label Text="Carga máxima disponível com todos passageiros?"
+FontSize="Large"
+TextColor ="{DynamicResource PrimaryColor}"
+VerticalOptions="EndAndExpand"
+HorizontalOptions="CenterAndExpand">
+            </Label>
+            <Entry x:Name="_loadEntry"
+        	VerticalOptions="Start"
+         Placeholder="3100 (sem decimais)"
+        FontSize="20"
+        HorizontalTextAlignment="Center"
+      		Completed="HandleLoadConfirmation"
+        Keyboard="Text"/>
+            <Label Text="Horário partida"
+FontSize="Large"
+TextColor ="{DynamicResource PrimaryColor}"
+VerticalOptions="EndAndExpand"
+HorizontalOptions="CenterAndExpand">
+            </Label>
+            <DatePicker x:Name="_departureDatePicker"
+        	VerticalOptions="Start"
+            MinimumDate="{Binding Tomorrow, Mode=OneWay}"
+            FontSize="20"/>
+            <TimePicker x:Name="_departureTimePicker"
+            VerticalOptions="Start"
+            FontSize="20"/>
+            <Label Text="Horário chegada"
+FontSize="Large"
+TextColor ="{DynamicResource PrimaryColor}"
+VerticalOptions="EndAndExpand"
+HorizontalOptions="CenterAndExpand">
+            </Label>
+            <DatePicker x:Name="_arrivalDatePicker"
+        	VerticalOptions="Start"
+            MinimumDate="{Binding Tomorrow, Mode=OneWay}"
+            FontSize="20"/>
+            <TimePicker x:Name="_arrivalTimePicker"
+            VerticalOptions="Start"
+            FontSize="20"/>
+            <Button
+            x:Name="Save"
+            Text="Continuar" 
+            Clicked="OnContinueClicked"
+            HorizontalOptions="Fill" />
+            
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

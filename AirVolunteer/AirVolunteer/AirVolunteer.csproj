@@ -69,7 +69,19 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <MauiXaml Update="Pages\FlightsList.xaml">
+	  <Compile Update="Pages\AddFlightPage.xaml.cs">
+	    <DependentUpon>AddFlightPage.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Pages\FlightsListPage.xaml.cs">
+	    <DependentUpon>FlightsListPage.xaml</DependentUpon>
+	  </Compile>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiXaml Update="Pages\AddFlightPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Pages\FlightsListPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	</ItemGroup>
