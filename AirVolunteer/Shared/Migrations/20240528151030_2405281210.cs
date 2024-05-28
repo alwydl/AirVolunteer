@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Shared.Migrations
 {
     /// <inheritdoc />
-    public partial class _2405270913 : Migration
+    public partial class _2405281210 : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -20,8 +20,8 @@ namespace Shared.Migrations
                 {
                     Id = table.Column<Guid>(type: "char(36)", nullable: false),
                     Name = table.Column<string>(type: "longtext", nullable: false),
-                    Phone = table.Column<int>(type: "int", nullable: false),
-                    CPF = table.Column<int>(type: "int", nullable: false)
+                    Phone = table.Column<long>(type: "bigint", nullable: false),
+                    CPF = table.Column<long>(type: "bigint", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -58,8 +58,7 @@ namespace Shared.Migrations
             migrationBuilder.CreateIndex(
                 name: "IX_Flights_PilotId",
                 table: "Flights",
-                column: "PilotId",
-                unique: true);
+                column: "PilotId");
         }
 
         /// <inheritdoc />

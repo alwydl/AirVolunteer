@@ -46,5 +46,23 @@ namespace Shared.Repositories
                 throw new Exception("PilotREP-Add", ex);
             }
         }
+
+        public static List<FlightMOD> GetAll()
+        {
+            try
+            {
+                using AirVolunteerDBContext context = new();
+
+                var query = context.Flights.Where(s => s.Departure >= DateTime.UtcNow);
+
+                var Flights = query.OrderBy(x => x.Departure).ToList();
+
+                return Flights;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Failed to retrieve the flights from the DB", ex);
+            }
+        }
     }
 }

@@ -11,8 +11,8 @@ using Shared.Database;
 namespace Shared.Migrations
 {
     [DbContext(typeof(AirVolunteerDBContext))]
-    [Migration("20240527121416_2405270913")]
-    partial class _2405270913
+    [Migration("20240528151030_2405281210")]
+    partial class _2405281210
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -57,8 +57,7 @@ namespace Shared.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("PilotId")
-                        .IsUnique();
+                    b.HasIndex("PilotId");
 
                     b.ToTable("Flights");
                 });
@@ -69,15 +68,15 @@ namespace Shared.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("char(36)");
 
-                    b.Property<int>("CPF")
-                        .HasColumnType("int");
+                    b.Property<long>("CPF")
+                        .HasColumnType("bigint");
 
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.Property<int>("Phone")
-                        .HasColumnType("int");
+                    b.Property<long>("Phone")
+                        .HasColumnType("bigint");
 
                     b.HasKey("Id");
 

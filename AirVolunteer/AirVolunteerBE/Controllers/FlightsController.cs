@@ -17,6 +17,13 @@ namespace AirVolunteerBE.Controllers
             return FlightREP.Get(pilotID);
         }
 
+        [HttpGet]
+        [Route("GetAllFlightsInfo")]
+        public List<FlightMOD> GetAllFlightsInfo()
+        {
+            return FlightREP.GetAll();
+        }
+
         [HttpPost]
         [Route("PostFlightInfo")]
         public List<FlightMOD> PostFlightInfo([FromBody] FlightMOD flight)

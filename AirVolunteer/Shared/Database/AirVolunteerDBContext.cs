@@ -10,6 +10,7 @@ namespace Shared.Database
     {
         public virtual DbSet<PilotMOD> Pilots { get; set; }
         public virtual DbSet<FlightMOD> Flights { get; set; }
+        public virtual DbSet<VolunteerMOD> Volunteers { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -26,8 +27,11 @@ namespace Shared.Database
         {
             modelBuilder.Entity<FlightMOD>()
                 .HasIndex(d => new { d.PilotId })
-                .IsUnique(true);
+                .IsUnique(false);
 
+            modelBuilder.Entity<VolunteerMOD>()
+                .HasIndex(d => d.CPF)
+                .IsUnique(true);
         }
     }
 }

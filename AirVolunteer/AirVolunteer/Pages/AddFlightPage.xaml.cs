@@ -87,11 +87,11 @@ public partial class AddFlightPage : ContentPage, INotifyPropertyChanged
         var flight = new FlightMOD()
         {
             AirplaneModel = _modelEntry.Text,
-            Arrival = _arrivalDatePicker.Date.Add(_arrivalTimePicker.Time),
+            Arrival = _arrivalDatePicker.Date.Add(_arrivalTimePicker.Time).ToUniversalTime(),
             PaxPositionsAvailable = int.Parse(_paxEntry.Text),
             DestinyAirport = _destinyEntry.Text,
             OriginAirport = _originEntry.Text,
-            Departure = _departureDatePicker.Date.Add(_departureTimePicker.Time),
+            Departure = _departureDatePicker.Date.Add(_departureTimePicker.Time).ToUniversalTime(),
             FullPaxMaxLoad = int.Parse(_loadEntry.Text),
             PilotId = Guid.Parse(Parameters.PilotID),
             Id = Guid.Empty

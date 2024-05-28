@@ -11,8 +11,8 @@ using Shared.Database;
 namespace Shared.Migrations
 {
     [DbContext(typeof(AirVolunteerDBContext))]
-    [Migration("20240527151750_2405271214")]
-    partial class _2405271214
+    [Migration("20240528152010_2405281219")]
+    partial class _2405281219
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -57,8 +57,7 @@ namespace Shared.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("PilotId")
-                        .IsUnique();
+                    b.HasIndex("PilotId");
 
                     b.ToTable("Flights");
                 });
@@ -82,6 +81,52 @@ namespace Shared.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Pilots");
+                });
+
+            modelBuilder.Entity("Shared.Models.VolunteerMOD", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("char(36)");
+
+                    b.Property<long>("CPF")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("CouncilName")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<long>("CouncilNumber")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<long>("PhoneNumber")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("Project")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<long>("RG")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("VolunteerType")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CPF")
+                        .IsUnique();
+
+                    b.ToTable("Volunteers");
                 });
 
             modelBuilder.Entity("Shared.Models.FlightMOD", b =>
