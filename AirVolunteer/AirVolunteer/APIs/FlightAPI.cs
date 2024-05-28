@@ -18,7 +18,6 @@ namespace AirVolunteer.APIs
             using (HttpClient client = new HttpClient())
             {
                 string requestUri = string.Format("{0}/Flights/GetPilotFlightsInfo?pilotID={1}", url, Parameters.PilotID);
-
                 HttpResponseMessage response = await client.GetAsync(requestUri);
 
                 if (response.IsSuccessStatusCode)

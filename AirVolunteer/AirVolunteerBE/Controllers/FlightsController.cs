@@ -5,8 +5,9 @@ using Shared.Repositories;
 
 namespace AirVolunteerBE.Controllers
 {
-    [Route("[controller]")]
+    
     [ApiController]
+    [Route("[controller]")]
     public class FlightsController : ControllerBase
     {
         [HttpGet]
