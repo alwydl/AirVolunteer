@@ -20,7 +20,7 @@ namespace Shared.Models
         public int FullPaxMaxLoad { get; set; }
         [Required]
         public Guid PilotId { get; set; }
-        public virtual PilotMOD Pilot { get; set; }
+        public virtual PilotMOD? Pilot { get; set; }
         [Required]
         public DateTime Departure { get; set; }
         public DateTime Arrival { get; set; }

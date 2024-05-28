@@ -18,7 +18,7 @@ namespace AirVolunteer.Definitions
         {
             get
             {
-                if (_pilotID == "")
+                if (String.IsNullOrEmpty(_pilotID))
                 {
                     try
                     {

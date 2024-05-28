@@ -86,10 +86,11 @@ namespace AirVolunteer
                 var pilot = await PilotAPI.GetPilotAsync();
 
                 //Go to next page
+                var flights = await FlightAPI.GetFlightsAsync();
                 var content = new ShellContent
                 {
                     Title = "InPro APP",
-                    ContentTemplate = new DataTemplate(() => new MainPage()),
+                    ContentTemplate = new DataTemplate(() => new FlightsListPage(flights)),
                     Route = "MainPage"
                 };
                 var appShell = new AppShell();
