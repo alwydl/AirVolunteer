@@ -12,7 +12,7 @@
                      Grid.Row="0"
                     IsRefreshing="{Binding IsLoading}"
                     Command="{Binding RefreshCommand}">
-            <ListView ItemsSource="{Binding Models}" 
+            <ListView ItemsSource="{Binding Flights}" 
                   HasUnevenRows="True">
                 <ListView.ItemTemplate>
                     <DataTemplate>
@@ -25,10 +25,8 @@
                                 <StackLayout Orientation="Horizontal">
                                     <Label Text="{Binding PaxPositionsAvailable, StringFormat='Vagas: {0}'}" HorizontalOptions="StartAndExpand"/>
                                 </StackLayout>
-                                <StackLayout Orientation="Horizontal">
-                                    <Label Text="{Binding DepartureLocalTime, StringFormat='Partida Prevista: {0:d}'}" HorizontalOptions="StartAndExpand"/>
-                                    <Label Text="{Binding ArrivalLocalTime, StringFormat='Chegada Prevista : {0:d}'}" HorizontalOptions="End"/>
-                                </StackLayout>
+                                <Label Text="{Binding DepartureLocalTime, StringFormat='Partida Prevista: {0:dd/MM/yy hh:mm tt}'}" HorizontalOptions="StartAndExpand"/>
+                                <Label Text="{Binding ArrivalLocalTime, StringFormat='Chegada Prevista : {0:dd/MM/yy hh:mm tt}'}" HorizontalOptions="StartAndExpand"/>
                             </StackLayout>
                         </ViewCell>
                     </DataTemplate>

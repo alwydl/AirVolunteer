@@ -1,9 +1,10 @@
 using AirVolunteer.APIs;
 using Shared.Models;
+using System.ComponentModel;
 
 namespace AirVolunteer.Pages;
 
-public partial class FlightsListPage : ContentPage
+public partial class FlightsListPage : ContentPage, INotifyPropertyChanged
 {
     private bool _isLoading;
     public bool IsLoading
