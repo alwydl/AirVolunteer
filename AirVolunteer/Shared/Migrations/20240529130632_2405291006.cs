@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Shared.Migrations
 {
     /// <inheritdoc />
-    public partial class _2405281210 : Migration
+    public partial class _2405291006 : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -26,6 +26,27 @@ namespace Shared.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Pilots", x => x.Id);
+                })
+                .Annotation("MySQL:Charset", "utf8mb4");
+
+            migrationBuilder.CreateTable(
+                name: "Volunteers",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "char(36)", nullable: false),
+                    Name = table.Column<string>(type: "longtext", nullable: false),
+                    CPF = table.Column<long>(type: "bigint", nullable: false),
+                    RG = table.Column<long>(type: "bigint", nullable: false),
+                    CouncilNumber = table.Column<long>(type: "bigint", nullable: false),
+                    CouncilName = table.Column<string>(type: "longtext", nullable: false),
+                    VolunteerType = table.Column<string>(type: "longtext", nullable: false),
+                    Project = table.Column<string>(type: "longtext", nullable: false),
+                    PhoneNumber = table.Column<long>(type: "bigint", nullable: false),
+                    Email = table.Column<string>(type: "longtext", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Volunteers", x => x.Id);
                 })
                 .Annotation("MySQL:Charset", "utf8mb4");
 
@@ -59,6 +80,12 @@ namespace Shared.Migrations
                 name: "IX_Flights_PilotId",
                 table: "Flights",
                 column: "PilotId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Volunteers_CPF",
+                table: "Volunteers",
+                column: "CPF",
+                unique: true);
         }
 
         /// <inheritdoc />
@@ -66,6 +93,9 @@ namespace Shared.Migrations
         {
             migrationBuilder.DropTable(
                 name: "Flights");
+
+            migrationBuilder.DropTable(
+                name: "Volunteers");
 
             migrationBuilder.DropTable(
                 name: "Pilots");

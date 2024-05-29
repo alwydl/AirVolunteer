@@ -11,8 +11,8 @@ using Shared.Database;
 namespace Shared.Migrations
 {
     [DbContext(typeof(AirVolunteerDBContext))]
-    [Migration("20240528152010_2405281219")]
-    partial class _2405281219
+    [Migration("20240529130632_2405291006")]
+    partial class _2405291006
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

@@ -17,5 +17,12 @@ namespace AirVolunteerBE.Controllers
             volunteer = VolunteerREP.Add(volunteer);
             return volunteer;
         }
+
+        [HttpGet]
+        [Route("GetVolunteerId")]
+        public Guid GetVolunteerId(long cpf)
+        {
+            return VolunteerREP.Get(cpf).Id;
+        }
     }
 }
