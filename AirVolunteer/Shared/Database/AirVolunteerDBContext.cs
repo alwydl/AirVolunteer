@@ -18,8 +18,8 @@ namespace Shared.Database
             .AddJsonFile("appsettings.json")
             .Build();
 
-
-            string connectionString = configuration.GetConnectionString("DefaultConnection"); // Replace "DefaultConnection" with your actual connection string name
+            //string connectionString = configuration.GetConnectionString("DefaultConnection"); // Replace "DefaultConnection" with your actual connection string name
+            string connectionString = configuration.GetConnectionString("DevConnection"); // Replace "DefaultConnection" with your actual connection string name
             optionsBuilder.UseMySQL(connectionString);
         }
 
