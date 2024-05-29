@@ -41,5 +41,8 @@ namespace AirVolunteer.Definitions
                 _pilotID = value;
             }
         }
+
+        public static readonly Color SplashBackgroundColor = Color.FromHex("#01304E"); // Change "#FF0000" to your desired color code
+
     }
 }
