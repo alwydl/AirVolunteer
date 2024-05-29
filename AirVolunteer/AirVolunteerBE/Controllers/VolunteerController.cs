@@ -22,7 +22,11 @@ namespace AirVolunteerBE.Controllers
         [Route("GetVolunteerId")]
         public Guid GetVolunteerId(long cpf)
         {
-            return VolunteerREP.Get(cpf).Id;
+            var volunteer = VolunteerREP.Get(cpf);
+            if (volunteer == null) {
+                return Guid.Empty; 
+            }
+            return volunteer.Id;
         }
     }
 }
